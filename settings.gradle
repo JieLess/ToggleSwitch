@@ -1,0 +1,3 @@
+rootProject.name='ToggleSwitch'
+include ':app'
+include ':switchlib'

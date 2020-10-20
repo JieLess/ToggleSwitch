@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ToggleSwitch</string>
+    <string name="night_vision_mode">Night vision Mode</string>
+    <string name="level">Level</string>
+</resources>
