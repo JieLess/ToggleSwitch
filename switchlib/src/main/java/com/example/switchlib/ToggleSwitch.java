@@ -1,4 +1,4 @@
-package com.example.switchlib;
+package com.wyze.mars.widget.toggleswitch;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -11,11 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.DrawableRes;
 import androidx.annotation.Nullable;
 
+import com.wyze.mars.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author 492515074@qq.com on 2020.10.19
+ * @author wujie@gwell.cc on 2020.10.19
  */
 public class ToggleSwitch extends LinearLayout implements View.OnClickListener {
 
@@ -36,8 +38,8 @@ public class ToggleSwitch extends LinearLayout implements View.OnClickListener {
     public ToggleSwitch(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        LayoutInflater.from(context).inflate(R.layout.toggle_switch_widget, this);
-        mContainer = findViewById(R.id.toggle_switch_container);
+        LayoutInflater.from(context).inflate(R.layout.mars_toggle_switch_widget, this);
+        mContainer = findViewById(R.id.mars_toggle_switch_container);
     }
 
     private void addToggleButton(String str) {
@@ -51,6 +53,11 @@ public class ToggleSwitch extends LinearLayout implements View.OnClickListener {
         int margin = dp2px(2f);
         layoutParams.setMargins(margin, margin, margin, margin);
         mContainer.addView(tsb.getView(), layoutParams);
+
+        //隐藏最后一个分隔符
+        if (isLast(mTitles.size() - 1)) {
+            tsb.hideSeparator();
+        }
     }
 
     protected ToggleSwitchButton getToggleSwitchButton(int position) {
@@ -101,14 +108,14 @@ public class ToggleSwitch extends LinearLayout implements View.OnClickListener {
      * 未选中状态
      */
     protected void disable(int position) {
-        setColors(position, R.drawable.toggle_switch_btn_normal);
+        setColors(position, R.drawable.mars_toggle_switch_btn_normal);
     }
 
     /**
      * 选中状态
      */
     protected void activate(int position) {
-        setColors(position, R.drawable.toggle_switch_btn_checked);
+        setColors(position, R.drawable.mars_toggle_switch_btn_checked);
     }
 
     protected void setColors(int position, @DrawableRes int resId) {
@@ -117,6 +124,7 @@ public class ToggleSwitch extends LinearLayout implements View.OnClickListener {
 
     /**
      * 设置显示的数据列表
+     *
      * @param titles 要显示的数据
      */
     public void setTitles(List<String> titles) {
